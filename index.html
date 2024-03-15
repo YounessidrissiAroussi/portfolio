@@ -148,12 +148,11 @@
           <div class="col-md-12 heading-section text-center ftco-animate">
           	<h1 class="big big-2">Services</h1>
             <h2 class="mb-4">Services</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
           </div>
         </div>
     		<div class="row">
 					<div class="col-md-4 text-center d-flex ftco-animate">
-						<a href="#" class="services-1">
+						<a class="services-1">
 							<span class="icon">
 								<i class="flaticon-analysis"></i>
 							</span>
@@ -163,7 +162,7 @@
 						</a>
 					</div>
 					<div class="col-md-4 text-center d-flex ftco-animate">
-						<a href="#" class="services-1">
+						<a class="services-1">
 							<span class="icon">
 								<i class="flaticon-ideas"></i>
 							</span>
@@ -174,7 +173,7 @@
 					</div>
 
 					<div class="col-md-4 text-center d-flex ftco-animate">
-						<a href="#" class="services-1">
+						<a class="services-1">
 							<span class="icon">
 								<i class="flaticon-analysis"></i>
 							</span>
@@ -203,18 +202,18 @@
 							<div class="progress">
 								<div class="progress-bar color-3" role="progressbar" aria-valuenow="80"
 								aria-valuemin="0" aria-valuemax="100" style="width:80%">
-							    <span>80%</span>
+							    <span class="progress-num">80%</span>
 							</div>
 						</div>
 					</div>
 				</div>
 					<div class="col-md-6 animate-box">
 						<div class="progress-wrap ftco-animate">
-							<h3>JavaScript - jQuery - Ajax</h3>
+							<h3>JavaScript - jQuery </h3>
 							<div class="progress">
 								 <div class="progress-bar color-2" role="progressbar" aria-valuenow="75"
 								  aria-valuemin="0" aria-valuemax="100" style="width:75%">
-								<span>75%</span>
+								<span class="progress-num">75%</span>
 								  </div>
 							</div>
 						</div>
@@ -225,7 +224,7 @@
 							<div class="progress">
 								 <div class="progress-bar color-2" role="progressbar" aria-valuenow="70"
 								  aria-valuemin="0" aria-valuemax="100" style="width:70%">
-								<span>70%</span>
+								<span class="progress-num">70%</span>
 								  </div>
 							</div>
 						</div>
@@ -236,7 +235,7 @@
 							<div class="progress">
 								 <div class="progress-bar color-2" role="progressbar" aria-valuenow="75"
 								  aria-valuemin="0" aria-valuemax="100" style="width:75%">
-								<span>75%</span>
+								<span class="progress-num">75%</span>
 								  </div>
 							</div>
 						</div>
@@ -247,7 +246,7 @@
 							<div class="progress">
 								 <div class="progress-bar color-2" role="progressbar" aria-valuenow="80"
 								  aria-valuemin="0" aria-valuemax="100" style="width:80%">
-								<span>80%</span>
+								<span class="progress-num">80%</span>
 								  </div>
 							</div>
 						</div>
@@ -258,7 +257,7 @@
 							<div class="progress">
 								 <div class="progress-bar color-2" role="progressbar" aria-valuenow="80"
 								  aria-valuemin="0" aria-valuemax="100" style="width:80%">
-								<span>80%</span>
+								<span class="progress-num">80%</span>
 								  </div>
 							</div>
 						</div>
@@ -269,7 +268,7 @@
 							<div class="progress">
 								 <div class="progress-bar color-2" role="progressbar" aria-valuenow="60"
 								  aria-valuemin="0" aria-valuemax="100" style="width:60%">
-								<span>60%</span>
+								<span class="progress-num">60%</span>
 								  </div>
 							</div>
 						</div>
@@ -280,7 +279,7 @@
 							<div class="progress">
 								 <div class="progress-bar color-2" role="progressbar" aria-valuenow="80"
 								  aria-valuemin="0" aria-valuemax="100" style="width:80%">
-								<span>80%</span>
+								<span class="progress-num">80%</span>
 								  </div>
 							</div>
 						</div>
@@ -291,7 +290,7 @@
 							<div class="progress">
 								 <div class="progress-bar color-2" role="progressbar" aria-valuenow="60"
 								  aria-valuemin="0" aria-valuemax="100" style="width:60%">
-								<span>60%</span>
+								<span class="progress-num">60%</span>
 								  </div>
 							</div>
 						</div>
@@ -302,7 +301,7 @@
 							<div class="progress">
 								 <div class="progress-bar color-2" role="progressbar" aria-valuenow="70"
 								  aria-valuemin="0" aria-valuemax="100" style="width:70%">
-								<span>70%</span>
+								<span class="progress-num">70%</span>
 								  </div>
 							</div>
 						</div>
@@ -455,10 +454,34 @@
 	<script src="js/scrollax.min.js"></script>
 	<script src="js/main.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+	
 	<!-- Include GSAP TextPlugin -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/TextPlugin.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 	<script>
-		
+		 // Select all progress bars
+		 const progressBars = document.querySelectorAll('.progress-bar');
+		 
+			// Loop through each progress bar
+			progressBars.forEach(bar => {
+			// Set initial width to 0
+			gsap.set(bar, { width: '0%' });
+
+			// Create a ScrollTrigger for each progress bar
+			gsap.to(bar, {
+				width: bar.getAttribute('aria-valuenow') + '%',
+				duration: 1,
+				ease: 'power2.out',
+				scrollTrigger: {
+				trigger: bar,
+				start: 'top 80%',
+				end: 'top 20%',
+				scrub: false,
+				onEnter: () => {
+					bar.querySelector('span').style.opacity = 1;
+				},
+				}
+			});});
 		// GSAP animation for navbar toggler button
 		gsap.to(".navbar-toggler", {
 			duration: 1,

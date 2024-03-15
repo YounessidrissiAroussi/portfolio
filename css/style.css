@@ -8,6 +8,10 @@
   ::-webkit-scrollbar {
     width: 10px;
   }
+
+  .progress-num{
+    opacity: 0;
+  }
   
   /* Track */
   ::-webkit-scrollbar-track {
